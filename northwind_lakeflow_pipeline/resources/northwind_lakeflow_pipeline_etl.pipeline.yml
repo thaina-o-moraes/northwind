@@ -11,14 +11,12 @@ resources:
 
       #root_path: "../src/northwind_lakeflow_pipeline_etl"
       #libraries:
-      #   - glob:
-      #       include: ../src/northwind_lakeflow_pipeline_etl/transformations/**
 
       libraries:
-      - file:
-          path: ../src/transformations/*.py
-      # - file:
-      #     path: ../src/staging/*.py
+        # - file:
+        #   path: ../src/northwind_lakeflow_pipeline_etl/transformations/*.py
+        - glob:
+            include: ../src/northwind_lakeflow_pipeline_etl/transformations/**
 
       configuration:
         catalog_name: ${var.target_catalog}
@@ -28,8 +26,8 @@ resources:
         int_schema_name: ${var.int_schema}
         mart_schema_name: ${var.mart_schema}
         bundle.sourcePath: "${workspace.file_path}/src"
-      
-      # channel: "current"
+
       catalog: ${var.target_catalog}
       schema: ${var.dev_schema_name}
       # schema_silver: silver_de #${var.schema_silver}
+

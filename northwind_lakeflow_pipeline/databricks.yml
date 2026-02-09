@@ -4,7 +4,7 @@ bundle:
 
 include:
   - resources/*.yml
-  - ../variables.yml
+  - variables.yml
   - targets.yml
 
 sync:
@@ -14,4 +14,5 @@ sync:
 permissions:
   - user_name: thaina.moraes@indicium.tech
     level: CAN_MANAGE
+
 
