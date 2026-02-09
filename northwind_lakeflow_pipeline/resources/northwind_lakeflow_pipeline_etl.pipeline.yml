@@ -10,13 +10,9 @@ resources:
       serverless: true
 
       #root_path: "../src/northwind_lakeflow_pipeline_etl"
-      #libraries:
-
       libraries:
-        # - file:
-        #   path: ../src/northwind_lakeflow_pipeline_etl/transformations/*.py
         - glob:
-            include: ../src/northwind_lakeflow_pipeline_etl/transformations/**
+            include: ../src/northwind_lakeflow_pipeline_etl/models/**
 
       configuration:
         catalog_name: ${var.target_catalog}
@@ -29,5 +25,4 @@ resources:
 
       catalog: ${var.target_catalog}
       schema: ${var.dev_schema_name}
-      # schema_silver: silver_de #${var.schema_silver}
 

@@ -1,4 +1,4 @@
-CREATE STREAMING TABLE ${catalog_name}.${raw_schema_name}.raw_erp_customers
+create streaming table ${catalog_name}.${raw_schema_name}.raw_erp_customers
     (
 --   teste não nulo para a coluna id
   CONSTRAINT valid_id_not_null EXPECT (id IS NOT NULL) ON VIOLATION FAIL UPDATE

@@ -4,10 +4,10 @@ targets:
     default: true
     variables:
       target_catalog: ${var.dev_catalog_name}
-      raw_schema: bronze
-      stg_schema: silver_${var.dev_schema_name}
-      int_schema: intermediate_${var.dev_schema_name}
-      mart_schema: gold_${var.dev_schema_name}
+      raw_schema: ${var.dev_schema_name}_bronze
+      stg_schema: ${var.dev_schema_name}_silver
+      int_schema: ${var.dev_schema_name}_intermediate
+      mart_schema: ${var.dev_schema_name}_gold
 
     workspace:
       host: https://dbc-770f780f-8566.cloud.databricks.com
