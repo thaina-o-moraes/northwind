@@ -1,19 +1,21 @@
 variables:
-# ────────────────────────── transformation_variabels.yml ─────────────────────────
   target_catalog:
     description: Target catalog where database objects (tables, views) will be created.
     default: workspace
+  
   raw_schema:
     description: Helper variable to assign either dev_schema_name or raw_schema_name based on the target environment.
+  
   stg_schema:
     description: Schema used for staging tables (pipeline configuration).
+  
   int_schema:
     description: Schema used for intermediate tables (pipeline configuration).
+ 
   mart_schema:
     description: Schema used for mart tables (pipeline configuration).
 
-# ────────────────────────────────── common_variables.yml ──────────────────────
-# CATALOGS
+# Catalogs
   dev_catalog_name:
     description: Catalog name for the development environment.
     default: workspace
@@ -22,7 +24,7 @@ variables:
     description: Catalog name for the production environment.
     default: prod_db
 
-# INGESTION VARIABLES
+# Ingestion variables
   raw_schema_name:
     description: Schema used for raw ingestion tables (pipeline configuration).
     default: bronze
@@ -40,12 +42,12 @@ variables:
     description: Default schema name for the mart layer.
     default: gold
     
-# Development Sandbox
+# Development
   dev_schema_name:
     default: dev_thaina_moraes
     description: Developer sandbox schema (isolated per user). Eg. dev_john_doe
 
-# bundle configuration
+# Bundle configuration
   root_path:
     description: Workspace root path where the bundle will be deployed.
     default: /Workspace/Users/${workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}

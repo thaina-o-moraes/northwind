@@ -11,7 +11,7 @@ targets:
 
     workspace:
       host: https://dbc-770f780f-8566.cloud.databricks.com
-      # root_path: /Workspace/Users/{workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
+      root_path: /Workspace/Users/{workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
     permissions:
       - user_name: ${workspace.current_user.userName}
         level: CAN_MANAGE
@@ -20,11 +20,10 @@ targets:
   #   mode: production
   #   workspace:
   #     host: https://dbc-770f780f-8566.cloud.databricks.com
-  #     # We explicitly deploy to /Workspace/Users/thaina.moraes@indicium.tech to make sure we only have a single copy.
-  #     root_path: /Workspace/Users/thaina.moraes@indicium.tech/.bundle/${bundle.name}/${bundle.target}
+  #     # root_path: /Workspace/Users/{workspace.current_user.userName}/.bundle/${bundle.name}/${bundle.target}
   #   variables:
   #     catalog: workspace
   #     schema: prod
   #   permissions:
-  #     - user_name: thaina.moraes@indicium.tech
+  #     - user_name: ${workspace.current_user.userName}
   #       level: CAN_MANAGE

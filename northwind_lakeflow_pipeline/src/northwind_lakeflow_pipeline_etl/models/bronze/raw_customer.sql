@@ -1,22 +1,26 @@
 create streaming table ${catalog_name}.${raw_schema_name}.raw_erp_customers
     (
---   teste não nulo para a coluna id
-  CONSTRAINT valid_id_not_null EXPECT (id IS NOT NULL) ON VIOLATION FAIL UPDATE
-)
-AS SELECT
-    id
-    , companyname
-    , contactname
-    , contacttitle
-    , address
-    , city
-    , region
-    , postalcode
-    , country
-    , phone
-    , fax
-FROM STREAM READ_FILES(
+        /* Data Quality*/
+        constraint valid_id_not_null expect (id is not null) on violation fail update
+    )
+as 
+
+select *
+from stream read_files(
     '/Volumes/workspace/raw/northwind/customers/',
     format => "csv",
-    header => true
+    header => true,
+    schema => """
+        id string
+        , companyname string
+        , contactname string
+        , contacttitle string
+        , address string
+        , city string
+        , region string
+        , postalcode string
+        , country string
+        , phone string
+        , fax string
+    """
 );

@@ -1,15 +1,11 @@
 bundle:
   name: northwind_lakeflow_pipeline
-  # uuid: 09ef711b-9837-4ffa-8639-9483b7ba06fc
 
+# Arquivos que serão importados
 include:
   - resources/*.yml
   - variables.yml
   - targets.yml
-
-sync:
-  paths:
-    - ./src
 
 permissions:
   - user_name: thaina.moraes@indicium.tech

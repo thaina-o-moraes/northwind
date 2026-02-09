@@ -1,10 +1,14 @@
 create streaming table ${catalog_name}.${raw_schema_name}.raw_erp_shippers
-AS SELECT
-    id
-    , companyname
-    , phone
-FROM STREAM READ_FILES(
+as
+
+select *
+from stream read_files(
     '/Volumes/workspace/raw/northwind/shippers/',
     format => "csv",
-    header => true
+    header => true,
+    schema => """
+        id int
+        , companyname string
+        , phone string
+    """
 );
