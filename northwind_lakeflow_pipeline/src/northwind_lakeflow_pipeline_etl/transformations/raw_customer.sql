@@ -1,0 +1,22 @@
+-- CREATE STREAMING TABLE ${target_catalog}.${raw_schema}.raw_erp_customers
+--     (
+-- --   teste não nulo para a coluna id
+--   CONSTRAINT valid_id_not_null EXPECT (id IS NOT NULL) ON VIOLATION FAIL UPDATE
+-- )
+-- AS SELECT
+--     id
+--     , companyname
+--     , contactname
+--     , contacttitle
+--     , address
+--     , city
+--     , region
+--     , postalcode
+--     , country
+--     , phone
+--     , fax
+-- FROM STREAM READ_FILES(
+--     '/Volumes/workspace/raw/northwind/customers/',
+--     format => "csv",
+--     header => true
+-- );

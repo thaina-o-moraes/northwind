@@ -1,0 +1,55 @@
+variables:
+# ────────────────────────── transformation_variabels.yml ─────────────────────────
+  target_catalog:
+    description: Target catalog where database objects (tables, views) will be created.
+  raw_schema:
+    description: Helper variable to assign either dev_schema_name or raw_schema_name based on the target environment.
+  stg_schema:
+    description: Schema used for staging tables (pipeline configuration).
+  int_schema:
+    description: Schema used for intermediate tables (pipeline configuration).
+  mart_schema:
+    description: Schema used for mart tables (pipeline configuration).
+# ───────────────────────────────────────────────────────────────────────────
+
+# ────────────────────────────────── common_variables.yml ────────────────────────────────
+# CATALOGS
+  dev_catalog_name:
+    description: Catalog name for the development environment.
+    default: dev_db
+
+  qa_catalog_name:
+    description: Catalog name for the QA environment.
+    default: qa_db
+
+  prod_catalog_name:
+    description: Catalog name for the production environment.
+    default: prod_db
+
+# INGESTION VARIABLES
+  raw_schema_name:
+    description: Schema used for raw ingestion tables (pipeline configuration).
+    default: bronze
+
+# Transformation variables
+  stg_schema_name:
+    description: Default schema name for the staging layer.
+    default: staging
+
+  int_schema_name:
+    description: Default schema name for the intermediate layer.
+    default: intermediate
+
+  mart_schema_name:
+    description: Default schema name for the mart layer.
+    default: mart
+    
+# Development Sandbox
+  dev_schema_name:
+    description: Developer sandbox schema (isolated per user). Eg. dev_john_doe
+
+# bundle configuration
+  root_path:
+    description: Workspace root path where the bundle will be deployed.
+    default: /Workspace/Users/thaina.moraes@indicium.tech/northwind_project/northwind_lakeflow_pipeline/src/northwind_lakeflow_pipeline_etl
+

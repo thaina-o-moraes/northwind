@@ -1,20 +1,35 @@
 # The main pipeline for northwind_lakeflow_pipeline
-
 resources:
   pipelines:
     northwind_lakeflow_pipeline_etl:
-      name: northwind_lakeflow_pipeline_etl
-      catalog: ${var.catalog}
-      schema: ${var.schema}
+      name: ${bundle.target}_dlt_pipeline
+
+      tags:
+        env: ${bundle.target}
+
       serverless: true
-      root_path: "../src/northwind_lakeflow_pipeline_etl"
+
+      #root_path: "../src/northwind_lakeflow_pipeline_etl"
+      #libraries:
+      #   - glob:
+      #       include: ../src/northwind_lakeflow_pipeline_etl/transformations/**
 
       libraries:
-        - glob:
-            include: ../src/northwind_lakeflow_pipeline_etl/transformations/**
+      - file:
+          path: ../src/transformations/*.py
+      # - file:
+      #     path: ../src/staging/*.py
 
-      environment:
-        dependencies:
-          # We include every dependency defined by pyproject.toml by defining an editable environment
-          # that points to the folder where pyproject.toml is deployed.
-          - --editable ${workspace.file_path}
+      configuration:
+        catalog_name: ${var.target_catalog}
+        raw_catalog_name: ${var.prod_catalog_name}
+        raw_schema_name: ${var.raw_schema}
+        stg_schema_name: ${var.stg_schema}
+        int_schema_name: ${var.int_schema}
+        mart_schema_name: ${var.mart_schema}
+        bundle.sourcePath: "${workspace.file_path}/src"
+      
+      # channel: "current"
+      catalog: ${var.target_catalog}
+      schema: ${var.dev_schema_name}
+      # schema_silver: silver_de #${var.schema_silver}

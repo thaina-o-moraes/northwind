@@ -1,0 +1,35 @@
+targets:
+  dev:
+    mode: development
+    default: true
+    variables:
+      target_catalog: ${var.dev_catalog_name}
+      raw_schema: bronze
+      stg_schema: ${var.dev_schema_name}
+      int_schema: ${var.dev_schema_name}
+      mart_schema: ${var.dev_schema_name}
+
+      # catalog: workspace
+      # schema_bronze: bronze_dev #_${workspace.current_user.short_name}
+      # schema_silver: silver_dev
+      # schema: ${workspace.current_user.short_name}
+      workspace:
+        host:  https://dbc-770f780f-8566.cloud.databricks.com
+        root_path: /Workspace/Users/thaina.moraes@indicium.tech/northwind_project/northwind_lakeflow_pipeline/src/northwind_lakeflow_pipeline_etl
+      permissions:
+        - user_name: thaina.moraes@indicium.tech 
+          #${workspace.current_user.userName}
+          level: CAN_MANAGE
+    
+  # prod:
+  #   mode: production
+  #   workspace:
+  #     host: https://dbc-770f780f-8566.cloud.databricks.com
+  #     # We explicitly deploy to /Workspace/Users/thaina.moraes@indicium.tech to make sure we only have a single copy.
+  #     root_path: /Workspace/Users/thaina.moraes@indicium.tech/.bundle/${bundle.name}/${bundle.target}
+  #   variables:
+  #     catalog: workspace
+  #     schema: prod
+  #   permissions:
+  #     - user_name: thaina.moraes@indicium.tech
+  #       level: CAN_MANAGE
