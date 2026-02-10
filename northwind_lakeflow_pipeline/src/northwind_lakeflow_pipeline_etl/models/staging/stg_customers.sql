@@ -1,4 +1,6 @@
-CREATE MATERIALIZED VIEW ${catalog_name}.${stg_schema_name}.stg_erp_customers as
+create materialized view ${catalog_name}.${stg_schema_name}.stg_erp_customers
+
+as
 with
   source_customers as (
     select *

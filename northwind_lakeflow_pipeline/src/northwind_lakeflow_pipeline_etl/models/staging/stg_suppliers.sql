@@ -1,4 +1,11 @@
-create materialized view ${catalog_name}.${stg_schema_name}.stg_erp_suppliers as
+create materialized view ${catalog_name}.${stg_schema_name}.stg_erp_suppliers
+  (
+    /* Data Quality*/
+    constraint valid_supplier_pk_not_null expect (supplier_pk is not null) on violation fail update,
+    constraint valid_name_not_null expect (supplier_company_name is not null) on violation fail update
+  )
+as 
+
 with
   source_suppliers as (
     select *

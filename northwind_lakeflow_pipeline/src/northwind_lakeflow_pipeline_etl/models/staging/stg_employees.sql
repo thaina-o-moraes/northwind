@@ -1,4 +1,11 @@
-create materialized view ${catalog_name}.${stg_schema_name}.stg_erp_employees as
+create materialized view ${catalog_name}.${stg_schema_name}.stg_erp_employees
+  (
+      /* Data Quality*/
+      constraint valid_employee_pk_not_null expect (employee_pk is not null) on violation fail update,
+      constraint valide_name_not_null expect (employee_name is not null) on violation fail update
+  )
+as
+
 with
   source_employees as (
     select *

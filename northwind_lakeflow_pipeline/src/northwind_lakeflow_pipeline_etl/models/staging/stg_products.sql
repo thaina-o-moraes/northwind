@@ -1,4 +1,13 @@
-create materialized view ${catalog_name}.${stg_schema_name}.stg_erp_products as
+create materialized view ${catalog_name}.${stg_schema_name}.stg_erp_products
+  (
+    /* Data Quality*/
+    constraint valid_product_pk_not_null expect (product_pk is not null) on violation fail update,
+    constraint valid_supplier_fk_not_null expect (supplier_fk is not null) on violation fail update,
+    constraint valid_category_fk_not_null expect (category_fk is not null) on violation fail update,
+    constraint valid_product_name_not_null expect (product_name is not null)
+  )
+as
+
 with
   source_products as (
     select *
