@@ -4,7 +4,7 @@ targets:
     default: true
     variables:
       target_catalog: ${var.dev_catalog_name}
-      raw_schema: ${var.dev_schema_name}_bronze
+      raw_schema: bronze
       stg_schema: ${var.dev_schema_name}_silver
       int_schema: ${var.dev_schema_name}_intermediate
       mart_schema: ${var.dev_schema_name}_gold
