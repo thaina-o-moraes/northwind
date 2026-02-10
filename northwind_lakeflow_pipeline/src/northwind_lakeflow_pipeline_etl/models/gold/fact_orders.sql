@@ -23,6 +23,9 @@ create materialized view ${catalog_name}.${mart_schema_name}.fct_orders
     /*  ──────────── Data Quality ──────────── */
     constraint valid_order_pk_not_null expect (order_pk is not null) on violation fail update,
     constraint valid_order_not_null expect (order_number is not null) on violation fail update,
+    constraint valid_value_gross expect (gross_total > 0),
+    constraint valid_value_net expect (net_total > 0),
+    constraint valid_value_quantity expect (total_quantity > 0),
     /* Databricks does not enforce primary key or foreign key constraints
     the purpose is to provide metadata about your data model to the system */
     constraint valid_order_pk primary key(order_pk),
