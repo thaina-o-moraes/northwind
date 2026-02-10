@@ -1,5 +1,12 @@
 create streaming table ${catalog_name}.${raw_schema_name}.raw_erp_products
-as
+    (
+        /* Data Quality*/
+        constraint valid_id_not_null expect (id is not null) on violation fail update,
+        constraint valid_name_not_null expect (productname is not null) on violation fail update,
+        constraint valid_supplierid expect (supplierid is not null) on violation fail update,
+        constraint valid_categoryid expect (categoryid is not null) on violation fail update
+    )
+as 
 
 select *
 from stream read_files(

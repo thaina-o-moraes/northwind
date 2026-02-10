@@ -14,7 +14,7 @@ with
       , cast(orderdate as date) as order_date
       , cast(requireddate as date) as required_delivery_date
       , cast(shippeddate as date) as ship_date
-      , cast(shipvia as string) as shipper_fk
+      , cast(shipvia as int) as shipper_fk
       , cast(freight as double) as freight
       , cast(shipname as string) as recipient_name
       , cast(shipaddress as string) as shipaddress

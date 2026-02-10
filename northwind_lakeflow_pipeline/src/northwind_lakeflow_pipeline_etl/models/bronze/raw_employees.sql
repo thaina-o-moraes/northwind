@@ -1,7 +1,8 @@
 create streaming table ${catalog_name}.${raw_schema_name}.raw_erp_employees
     (
         /* Data Quality*/
-        constraint valid_id_not_null expect (id is not null) on violation fail update
+        constraint valid_id_not_null expect (id is not null) on violation fail update,
+        constraint valide_name_not_null expect (firstname is not null) on violation fail update
     )
 as
 
